@@ -25,13 +25,19 @@ import Card from "./Card";
     setCurrCardIdx(currCardIdx + 1);
   }
 
+  function goBackward() {
+    setCurrCardIdx(currCardIdx - 1);
+  }
+
   return (
     <div className="Carousel">
       <h1>{title}</h1>
       <div className="Carousel-main">
         <i
+          id="leftArrow"
           className="bi bi-arrow-left-circle"
-          onClick={goForward}
+          onClick={goBackward}
+          style={{display : currCardIdx === 0 ? 'none' : 'initial'}}
         />
         <Card
           caption={currCard.caption}
@@ -40,8 +46,11 @@ import Card from "./Card";
           totalNum={total}
         />
         <i
+          id="rightArrow"
           className="bi bi-arrow-right-circle"
           onClick={goForward}
+          style={{display : currCardIdx === (photos.length - 1) ? 'none' : 'initial'}}
+
         />
       </div>
     </div>
